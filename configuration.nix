@@ -43,13 +43,7 @@
     shell = pkgs.zsh;
     isNormalUser = true;
     extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-    openssh.authorizedKeys.keyFiles = [
-      config.sops.secrets."ssh/studio/authorized_keys".path
-      config.sops.secrets."ssh/mbp/authorized_keys".path
-    ];
-
   };
-
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
   environment.systemPackages = with pkgs; [
@@ -61,8 +55,10 @@
   sops.defaultSopsFile = ./secrets/secrets.yaml;
   # sops.age.keyFile = /home/remote/.config/sops/age/keys.txt;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-  sops.secrets."ssh/studio/authorized_keys" = {};
-  sops.secrets."ssh/mbp/authorized_keys" = {};
+  sops.secrets."remote/ssh/authorized_keys" = {
+    path = "/home/remote/.ssh/authorized_keys";
+    owner = "remote";
+  };
 
   programs.zsh.enable = true;
 
