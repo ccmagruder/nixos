@@ -147,6 +147,30 @@ in
       tmux-navigator.enable = true;
       indent-blankline.enable = true;
     };
+    globals.mapleader = " ";
+    globals.maplocalleader = " ";
+    keymaps = [
+      {
+        mode = "n";
+        key = "<leader>e";
+        action = "<cmd>NvimTreeToggle<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader><Tab>";
+        action = "<cmd>bn<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>s";
+        action = "<cmd>w<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>q";
+        action = "<cmd>qa<CR>";
+      }
+    ];
     opts = {
       tabstop = 2;
       expandtab = true;
