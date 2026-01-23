@@ -151,6 +151,7 @@ in
 
     extraPlugins = [
       pkgs.vimPlugins.vim-tmux-focus-events
+      pkgs.vimPlugins.bufdelete-nvim
     ];
 
     autoCmd = [
@@ -183,6 +184,12 @@ in
         mode = "n";
         key = "<leader>q";
         action = "<cmd>qa<CR>";
+      }
+      {
+        mode = "n";
+        key = "<leader>w";
+        action = "<cmd>Bdelete<cr>";
+        options.desc = "Delete buffer, keep window";
       }
     ];
     opts = {
