@@ -105,6 +105,7 @@ in
   programs.tmux = {
     enable = true;
     mouse = true;
+    focusEvents = true;  # needed for pkgs.vimPlugins.vim.tmux-focus-events
     plugins = [
       pkgs.tmuxPlugins.vim-tmux-navigator
       pkgs.tmuxPlugins.nord
@@ -147,6 +148,19 @@ in
       tmux-navigator.enable = true;
       indent-blankline.enable = true;
     };
+
+    extraPlugins = [
+      pkgs.vimPlugins.vim-tmux-focus-events
+    ];
+
+    autoCmd = [
+      {
+        event = "FocusGained";
+        pattern = "*";
+        command = "silent !tmux resize-pane -Z";
+      }
+    ];
+
     globals.mapleader = " ";
     globals.maplocalleader = " ";
     keymaps = [
@@ -175,6 +189,7 @@ in
       tabstop = 2;
       expandtab = true;
       shiftwidth = 2;
+      autoread = true;
     };
     extraConfigLua = ''
       vim.api.nvim_set_hl(0, "Normal", { bg = "#000000" }) -- background black
