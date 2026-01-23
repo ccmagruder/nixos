@@ -12,27 +12,17 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    flake-parts.url = "github:hercules-ci/flake-parts";
   };
 
-  outputs =
-    { nixpkgs, home-manager, sops-nix, ... }:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeConfigurations."remote" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [
-          ./home.nix
-          sops-nix.homeManagerModules.sops
-        ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
+  outputs = inputs@{ flake-parts, sops-nix, ... }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      imports = [inputs.home-manager.flakeModules.home-manager ];
+      systems = [ "x86_64-linux" ];
+      flake.homeConfigurations."remote" =
+        inputs.home-manager.lib.homeManagerConfiguration {
+          pkgs = inputs.nixpkgs.legacyPackages."x86_64-linux";
+          modules = [ ./home.nix sops-nix.homeManagerModules.sops ];
+        };
     };
 }
