@@ -30,6 +30,8 @@ in
   home.packages = with pkgs; [
     git
     tmux
+    ripgrep
+    fd
   ];
   # home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
@@ -116,6 +118,17 @@ in
     enable = true;
     colorschemes.nord.enable = true;
     plugins = {
+      nvim-tree.enable = true;
+      web-devicons.enable = true;
+      tmux-navigator.enable = true;
+      indent-blankline.enable = true;
+      telescope = {
+        enable = true;
+        settings.defaults.vimgrep_arguments = [
+          "rg" "--color=never" "--no-heading" "--with-filename"
+          "--line-number" "--column" "--smart-case" "--hidden"
+        ];
+      };
       lualine = {
         enable = true;
         settings = {
@@ -143,10 +156,6 @@ in
           };
         };
       };
-      nvim-tree.enable = true;
-      web-devicons.enable = true;
-      tmux-navigator.enable = true;
-      indent-blankline.enable = true;
     };
 
     extraPlugins = [
@@ -190,6 +199,12 @@ in
         key = "<leader>w";
         action = "<cmd>Bdelete<cr>";
         options.desc = "Delete buffer, keep window";
+      }
+      {
+        mode = "n";
+        key = "<leader>fg";
+        action = "<cmd>Telescope live_grep<cr>";
+        options.desc = "Telescope: Live Grep";
       }
     ];
     opts = {
