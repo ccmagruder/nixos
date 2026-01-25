@@ -14,6 +14,7 @@
       system = "x86_64-linux";
       modules = [
         ./configuration.nix
+        ./gpu.nix
         ./hardware-configuration.nix
         sops-nix.nixosModules.sops
       ];
