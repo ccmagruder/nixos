@@ -19,6 +19,9 @@ windows:
   - name: dotfiles/home-manager
     root: ~/dotfiles/home-manager
     <<: *devenv
+  - name: dotfiles/bat.nvim
+    root: ~/dotfiles/bat.nvim
+    <<: *devenv
   - name: dotfiles/cuda
     root: ~/dotfiles/cuda
     <<: *devenv
