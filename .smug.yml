@@ -19,12 +19,15 @@ windows:
   - name: dotfiles/home-manager
     root: ~/dotfiles/home-manager
     <<: *devenv
-  - name: dotfiles/bat.nvim
-    root: ~/dotfiles/bat.nvim
+  - name: dotfiles/home-manager/ide/nixvim/bat.nvim
+    root: ~/dotfiles/home-manager/ide/nixvim/bat.nvim
     <<: *devenv
   - name: dotfiles/cuda
     root: ~/dotfiles/cuda
     <<: *devenv
   - name: symmetry
     root: ~/symmetry
+    <<: *devenv
+  - name: json
+    root: ~/json
     <<: *devenv
