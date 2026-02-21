@@ -4,10 +4,12 @@ attach: true
 
 # Define reusable window configuration
 window_template: &devenv
+  layout: main-vertical
   commands:
     - nvim -c NvimTreeToggle
   panes:
     - commands: []
+      size: "25%"
 
 windows:
   - name: nixos
@@ -30,4 +32,7 @@ windows:
     <<: *devenv
   - name: json
     root: ~/json
+    <<: *devenv
+  - name: challenges
+    root: ~/challenges
     <<: *devenv
