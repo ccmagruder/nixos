@@ -42,7 +42,7 @@
   users.users.remote = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "podman" ]; # Enable 'sudo' for the user.
   };
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -59,6 +59,8 @@
     path = "/home/remote/.ssh/authorized_keys";
     owner = "remote";
   };
+
+  virtualisation.podman.enable = true;
 
   programs.zsh.enable = true;
 
