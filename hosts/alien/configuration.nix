@@ -20,7 +20,7 @@
   # Use latest kernel.
   boot.kernelPackages = pkgs.linuxPackages_latest;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = "alien"; # Define your hostname.
 
   services.openssh = {
     enable = true;
