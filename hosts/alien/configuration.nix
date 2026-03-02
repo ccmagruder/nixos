@@ -52,7 +52,7 @@
     sops
   ];
 
-  sops.defaultSopsFile = ./secrets/secrets.yaml;
+  sops.defaultSopsFile = ../../secrets/secrets.yaml;
   # sops.age.keyFile = /home/remote/.config/sops/age/keys.txt;
   sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
   sops.secrets."remote/ssh/authorized_keys" = {

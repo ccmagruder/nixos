@@ -1,0 +1,23 @@
+session: ide
+root: ~
+attach: true
+
+# Define reusable window configuration
+window_template: &devenv
+  layout: main-vertical
+  commands:
+    - nvim -c NvimTreeToggle
+  panes:
+    - commands: []
+      size: "25%"
+
+windows:
+  - name: nixos
+    root: ~/nixos
+    <<: *devenv
+  - name: dotfiles
+    root: ~/dotfiles
+    <<: *devenv
+  - name: dotfiles/home-manager
+    root: ~/dotfiles/home-manager
+    <<: *devenv

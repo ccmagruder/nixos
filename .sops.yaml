@@ -1,7 +1,9 @@
 keys:
   - &alien age16unsac7t4xh96usmz7sfjpfpqk9q6fr27ryq6uahaa8ewrswaeysff24j6
+  - &vm    age1574w9a09d93jyntz9yfgafnknz35f0z3qyj04tp2lr23m4udpc2su7n7xn
 creation_rules:
-  - path_regex: hosts/alien/secrets\.yaml
+  - path_regex: secrets\.yaml
     key_groups:
     - age:
       - *alien 
+      - *vm

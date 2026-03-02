@@ -19,5 +19,13 @@
         sops-nix.nixosModules.sops
       ];
     };
+
+    nixosConfigurations.vm = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      modules = [
+        ./hosts/vm/configuration.nix
+        sops-nix.nixosModules.sops
+      ];
+    };
   };
 }
