@@ -13,9 +13,9 @@
     nixosConfigurations.nixos = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
-        ./gpu.nix
-        ./hardware-configuration.nix
+        ./hosts/alien/configuration.nix
+        ./hosts/alien/gpu.nix
+        ./hosts/alien/hardware-configuration.nix
         sops-nix.nixosModules.sops
       ];
     };

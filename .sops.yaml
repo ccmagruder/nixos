@@ -1,7 +1,7 @@
 keys:
-  - &admin_remote age16unsac7t4xh96usmz7sfjpfpqk9q6fr27ryq6uahaa8ewrswaeysff24j6
+  - &alien age16unsac7t4xh96usmz7sfjpfpqk9q6fr27ryq6uahaa8ewrswaeysff24j6
 creation_rules:
-  - path_regex: secrets/[^/]+\.(yaml|json|env|ini)$
+  - path_regex: hosts/alien/secrets\.yaml
     key_groups:
     - age:
-      - *admin_remote 
+      - *alien 
